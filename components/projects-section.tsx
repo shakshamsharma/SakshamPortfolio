@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/data/portfolio";
 import type { Project } from "@/types/portfolio";
+import { EASE_OUT_EXPO } from "@/lib/utils";
 
 /* ── Accent colors ─────────────────────────────────────────── */
 const accentStyles: Record<string, { border: string; shadow: string; badge: string }> = {
@@ -52,7 +53,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: EASE_OUT_EXPO }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       onMouseMove={handleMove}
       onMouseLeave={reset}

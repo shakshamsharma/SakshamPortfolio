@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Layers, Sparkles } from "lucide-react";
 import { skillCategories } from "@/data/portfolio";
+import { EASE_OUT_EXPO } from "@/lib/utils";
 
 const containerVariants = {
   hidden: {},
@@ -12,7 +13,7 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE_OUT_EXPO } },
 };
 
 export function SkillsSection() {

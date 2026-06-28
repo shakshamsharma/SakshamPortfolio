@@ -5,6 +5,7 @@ import { GraduationCap, MapPin, Sparkles, Target } from "lucide-react";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { Button } from "@/components/ui/button";
 import { personal, stats } from "@/data/portfolio";
+import { EASE_OUT_EXPO } from "@/lib/utils";
 
 const containerVariants = {
   hidden: {},
@@ -15,7 +16,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE_OUT_EXPO } },
 };
 
 export function AboutSection() {

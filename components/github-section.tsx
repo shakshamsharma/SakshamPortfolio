@@ -5,6 +5,7 @@ import { BookMarked, Github, GitPullRequest, Star, Users, Activity } from "lucid
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { personal } from "@/data/portfolio";
+import { EASE_OUT_EXPO } from "@/lib/utils";
 
 /* ── Contribution graph ──────────────────────────────────────── */
 const WEEKS = 52;
@@ -48,7 +49,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE_OUT_EXPO } },
 };
 
 export function GitHubSection() {

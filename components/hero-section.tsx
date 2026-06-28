@@ -13,6 +13,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { personal, typingRoles } from "@/data/portfolio";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
+import { EASE_OUT_EXPO } from "@/lib/utils";
 
 export function HeroSection() {
   const typed = useTypingEffect(typingRoles);
@@ -39,7 +40,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           className="relative z-10 mb-[-2.5rem]"
         >
           {/* Avatar ring */}
@@ -82,7 +83,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.1, ease: EASE_OUT_EXPO }}
           className="w-full max-w-2xl"
         >
           {/* Gradient border */}
