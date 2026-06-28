@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { personal, typingRoles } from "@/data/portfolio";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
@@ -17,6 +18,9 @@ import { EASE_OUT_EXPO } from "@/lib/utils";
 
 export function HeroSection() {
   const typed = useTypingEffect(typingRoles);
+  // Prevent hydration mismatch: don't render dynamic typing content until mounted
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   return (
     <section
@@ -153,8 +157,8 @@ export function HeroSection() {
                 className="relative mx-auto mt-4 inline-flex h-8 items-center gap-2 rounded-full border border-white/8 bg-white/4 px-5 text-sm font-medium text-white/60"
               >
                 <span className="size-1.5 rounded-full bg-violet-400/70" />
-                <span>{typed || personal.tagline}</span>
-                <span className="animate-pulse text-violet-400" aria-hidden="true">|</span>
+                <span suppressHydrationWarning>{mounted ? (typed || personal.tagline) : personal.tagline}</span>
+                {mounted && <span className="animate-pulse text-violet-400" aria-hidden="true">|</span>}
               </motion.div>
 
               {/* Divider */}
